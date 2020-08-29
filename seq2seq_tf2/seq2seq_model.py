@@ -18,6 +18,9 @@ class Seq2Seq(tf.keras.Model):
         self.enc_units = params["enc_units"]
         self.dec_units = params["dec_units"]
         self.attn_units = params["attn_units"]
+        print(self.embedding_matrix)
+        print(self.enc_units)
+        print(self.batch_size)
         self.encoder = Encoder(self.embedding_matrix,
                                self.enc_units,
                                self.batch_size)
@@ -52,8 +55,10 @@ if __name__ == '__main__':
     config_gpu()
     # 获得参数
     params = get_params()
+
     # 读取vocab训练
     vocab = Vocab(params["vocab_path"], params["vocab_size"])
+    print(vocab.count)
     # 计算vocab size
     input_sequence_len = 200
 
